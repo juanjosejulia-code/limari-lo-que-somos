@@ -250,7 +250,7 @@ p { margin: 0; text-wrap: pretty; }
 .credits b { font-weight: 600; }
 
 /* ---------- teléfono / ventanas estrechas: la lámina se vuelve bloque corrido ---------- */
-@container sheet (max-width: 760px) {
+@container sheet (max-width: 1024px) {
   .in { position: relative; inset: auto; padding: 22px 18px 18px; gap: 0; }
   .body { grid-template-columns: 1fr; row-gap: 18px; padding-top: 18px; }
   .body > * { grid-column: 1 / -1 !important; }
@@ -269,10 +269,10 @@ p { margin: 0; text-wrap: pretty; }
   .opener { grid-template-columns: 1fr; }
   .bleed-r { position: relative; inset: auto; width: auto !important; }
 }
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 1056px) {
   .sheet { aspect-ratio: auto; }
   .sheet--photo .bg { position: absolute; }
-  .sheet--photo .in { min-height: 88vw; }
+  .sheet--photo .in { min-height: max(56vw, 360px); }
   .fig__img { aspect-ratio: 3 / 2; height: auto !important; }
 }
 
@@ -329,7 +329,7 @@ p { margin: 0; text-wrap: pretty; }
 .lg-fe { color: var(--lapis); } .lg-campo { color: var(--ocre); } .lg-clima { color: var(--grafito-2); } .lg-cult { color: #7A4E6E; }
 .cal .ev.k-cult b { color: #7A4E6E; }
 .sheet--dark .tbl td, .sheet--dark .tbl th { border-color: rgba(227,230,224,.2); color: inherit; }
-@container sheet (max-width: 760px) {
+@container sheet (max-width: 1024px) {
   .g2, .g3, .cols2, .qgrid, .invgrid { grid-template-columns: 1fr; }
   .refs { columns: 1; }
   .fig__img { height: auto !important; aspect-ratio: 3 / 2; }
@@ -372,7 +372,14 @@ p { margin: 0; text-wrap: pretty; }
 .cloud-legend .k-paisaje span { color: var(--lapis); } .cloud-legend .k-campo span { color: var(--ocre); } .cloud-legend .k-fe span { color: #7A4E6E; } .cloud-legend .k-gente span { color: #3E4640; }
 .informes { line-height: 1.5; }
 
-@container sheet (max-width: 760px) { .cloud { max-height: none; } }
+@container sheet (max-width: 1024px) { .cloud { max-height: none; } }
+
+/* en pantalla, la lámina mantiene el 16:9 como mínimo y crece si el texto lo necesita */
+@media screen {
+  .sheet { display: grid; overflow: visible; }
+  .sheet > .in { position: relative; inset: auto; }
+  .sheet > .bg { overflow: hidden; }
+}
 
 </style>
 </head><body><nav class="nav" aria-label="Capítulos"><span class="nav__name">Limarí, lo que somos</span>
